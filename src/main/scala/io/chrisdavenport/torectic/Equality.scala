@@ -2,7 +2,7 @@ package io.chrisdavenport.torectic
 
 trait Equality[A]{
     def equal(x: A, y: A): Boolean
-    def nequal(x: A, y: A): Boolean = !equal(x,y)
+    final def nequal(x: A, y: A): Boolean = !equal(x,y)
 }
 
 object Equality {
