@@ -1,8 +1,18 @@
 package io.chrisdavenport.torectic
 
+/**
+  * LAWS 
+  * - x <= x (reflexivity)
+  * - if x <= y and y <= x, then x = y (anti-symmetry)
+  * - if x <= y and y <= z, then x <= z (transitivity)
+  *
+  * This has a stricter definition in that any two elements relationship MUST be defined.
+  *
+ */
+
 trait Order[A]{
-    def equality : Equality[A] = partialOrder.equality
-    def partialOrder: PartialOrder[A] = new PartialOrder[A]{
+    final def equality : Equality[A] = partialOrder.equality
+    final def partialOrder: PartialOrder[A] = new PartialOrder[A]{
         override def partialCompare(x: A, y: A): PartialOrder.PartialOrdered = compare(x,y) match {
             case Order.EQ => PartialOrder.PartialEQ
             case Order.LT => PartialOrder.PartialLT

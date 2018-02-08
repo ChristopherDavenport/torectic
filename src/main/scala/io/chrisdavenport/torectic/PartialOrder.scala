@@ -1,5 +1,12 @@
 package io.chrisdavenport.torectic
 
+/**
+  * LAWS
+  * - x <= x (reflexivity)
+  * - if x <= y and y <= x, then x = y (anti-symmetry)
+  * - if x <= y and y <= z, then x <= z (transitivity)
+  * 
+  **/
 trait PartialOrder[A]{
     def equality : Equality[A] = new Equality[A] {
         override def equal(x: A, y: A): Boolean = PartialOrder.PartialOrdered.partialOrderedEq.equal(partialCompare(x,y), PartialOrder.PartialEQ)
